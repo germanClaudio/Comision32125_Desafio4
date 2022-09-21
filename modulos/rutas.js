@@ -8,13 +8,13 @@ const products = new Container('./productos.txt')
 
 //--------Router GET ALL ---------
 router.get('/', (req, res) => {
-    console.log('GET ALL.' + req.params.id)
+    // console.log('GET ALL.' + req.params.id)
     res.json(products.getAll())
 })
 
 //--------Router GET BY ID ---------
 router.get('/:id', (req, res) => {
-    console.log('GET-id req.params: ' + req.params.id)
+    // console.log('GET-id req.params: ' + req.params.id)
     const { id } = req.params
     res.json(products.getById(id))
     
@@ -23,11 +23,12 @@ router.get('/:id', (req, res) => {
 //--------Router POST ---------
 router.post('/', (req, res) => {
     const productoGuardar = req.body
+    console.log('POST: ' + req.body[0])
     products.saveProduct(productoGuardar)
     res.status(201).send(
         { Success: `Producto ${productoGuardar.title} guardado con éxito en la BBDD!`,
-          Price: productoGuardar.price,
-          Thumbnail: productoGuardar.thumbnail
+          Price: `${productoGuardar.price}`,
+          Thumbnail: `${productoGuardar.thumbnail}`,
         }
     )
 })

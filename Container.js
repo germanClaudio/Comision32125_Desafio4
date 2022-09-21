@@ -31,14 +31,20 @@ module.exports = class Container {
 
     saveProduct(productoGuardar) {
         const fileContent = this.products
-        const productToSave = JSON.stringify([...fileContent, { ...productoGuardar, id: fileContent[fileContent.length - 1].id + 1 }], null, 2)
 
-        try {
-            this.products = fs.writeFileSync(this.myFile, productToSave)
+        if (productoGuardar !== undefined) {
+            const productToSave = JSON.stringify([...fileContent, { ...productoGuardar, id: fileContent[fileContent.length - 1].id + 1 }], null, 2)
             
-        } catch (error) {
-            console.log(error)
-            return { Error: 'Upps! Hubo un error y no pudimos guardar el Producto.' }
+            try {
+                this.products = fs.writeFileSync(this.myFile, productToSave)
+                
+            } catch (error) {
+                console.log(error)
+                return { Error: 'Upps! Hubo un error y no pudimos guardar el Producto.' }
+            }
+        }
+        else {
+            return { Error: 'Upps! We had some problems saving the product, try later.' }
         }
     }
 

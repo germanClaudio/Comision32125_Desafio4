@@ -4,11 +4,8 @@ const router = require('./modulos/rutas')
 
 const PORT = 8080
 
-const bodyParser = require('body-parser');
-
 app.use(express.json())
-app.use(express.urlencoded({extended : true}))
-app.use(bodyParser.json())
+app.use(express.urlencoded({extended : false})) //true
 app.use('/static', express.static(__dirname + '/public'))
 
 //------------ SERVER ----------
