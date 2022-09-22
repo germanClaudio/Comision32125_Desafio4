@@ -48,19 +48,9 @@
     "id": 9
   },
   {
-    "price": null,
+    "title": "Perfume Barcelona",
+    "price": 3333,
+    "thumbnail": "wwww.png",
     "id": 10
-  },
-  {
-    "price": null,
-    "id": 11
-  },
-  {
-    "price": null,
-    "id": 12
-  },
-  {
-    "price": null,
-    "id": 13
   }
 ]

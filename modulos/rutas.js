@@ -1,6 +1,10 @@
 const express = require('express')
 const { Router } = express
 const router = Router()
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 //-------------- Productos ----------------
 const Container = require('../Container')
@@ -13,21 +17,20 @@ router.get('/', (req, res) => {
 })
 
 //--------Router GET BY ID ---------
-router.get('/:id', (req, res) => {
-    // console.log('GET-id req.params: ' + req.params.id)
+router.get('/id', (req, res) => {
     const { id } = req.params
     res.json(products.getById(id))
-    
 })
 
 //--------Router POST ---------
-router.post("/", (req, res) => {
-    
+ router.post("/", (req, res) => {
+    // console.log('Post: ' + req.body) 
     const productoGuardar = {
-        title: req.body.title,
-        price: parseInt(req.body.price),
-        thumbnail: req.body.thumbnail
+        title: req.req.body.title,
+        price: parseInt(req.req.body.price),
+        thumbnail: req.req.body.thumbnail
     }
+    // console.log('Datos post: ' + req.req.body)
 
     products.saveProduct(productoGuardar)
     res.status(201).send(

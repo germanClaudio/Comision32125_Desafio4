@@ -2,11 +2,14 @@ const express = require('express')
 const app = express()
 const router = require('./modulos/rutas')
 
-const PORT = 8080
+const PORT = 5500
 
 app.use(express.json())
-app.use(express.urlencoded({extended : true}))
+app.use(express.urlencoded({ extended: true }))
+
 app.use('/static', express.static(__dirname + '/public'))
+//app.use(express.static('public'))
+// app.use(express.static('/public'))
 
 //------------ SERVER ----------
 app.use('/api/productos', router)
