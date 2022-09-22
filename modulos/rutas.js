@@ -21,9 +21,14 @@ router.get('/:id', (req, res) => {
 })
 
 //--------Router POST ---------
-router.post('/', (req, res) => {
-    const productoGuardar = req.body
-    console.log('POST: ' + req.body)
+router.post("/", (req, res) => {
+    
+    const productoGuardar = {
+        title: req.body.title,
+        price: parseInt(req.body.price),
+        thumbnail: req.body.thumbnail
+    }
+
     products.saveProduct(productoGuardar)
     res.status(201).send(
         { Success: `Producto ${productoGuardar.title} guardado con éxito en la BBDD!`,

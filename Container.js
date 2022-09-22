@@ -31,7 +31,7 @@ module.exports = class Container {
 
     saveProduct(productoGuardar) {
         const fileContent = this.products
-
+        console.log('Dentro del saveProduct: '+ JSON.stringify(productoGuardar))
         if (productoGuardar !== undefined) {
             const productToSave = JSON.stringify([...fileContent, { ...productoGuardar, id: fileContent[fileContent.length - 1].id + 1 }], null, 2)
             
